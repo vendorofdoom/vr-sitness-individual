@@ -8,6 +8,7 @@ public class CloudCreationEvents : MonoBehaviour
     CloudPrototype cloudPrototype;
     public GameObject cloudBubble;
     private bool begun;
+    public CloudGenGuidance guidance;
     
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class CloudCreationEvents : MonoBehaviour
         if (!begun && timer.exerciseBegun && !timer.exerciseComplete)
         {
             cloudPrototype.gameObject.SetActive(true);
+            guidance.enabled = true;
             begun = true;
         }
         
@@ -30,6 +32,7 @@ public class CloudCreationEvents : MonoBehaviour
         {
             // StartCoroutine(DisableClouds());
             cloudPrototype.gameObject.SetActive(false);
+            guidance.enabled = false;
             begun = false;
         }
     }
