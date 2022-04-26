@@ -117,28 +117,24 @@ public class CloudGenGuidance : MonoBehaviour
 
     public void Pause()
     {
-        Debug.Log("Pause");
         movementState = MovementState.Pause;
         TimeInMovement = 0f;
     }
 
     public void PullApart()
     {
-        Debug.Log("Pull apart");
         movementState = MovementState.PullApart;
         TimeInMovement = 0f;
     }
 
     public void Release()
     {
-        Debug.Log("Release!");
         movementState = MovementState.Release;
         TimeInMovement = 0f;
     }
 
     public void Swoosh()
     {
-        Debug.Log("Swoosh!");
         movementState = MovementState.Swoosh;
         TimeInMovement = 0f;
     }

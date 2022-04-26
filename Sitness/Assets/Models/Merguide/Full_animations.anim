@@ -5531,15 +5531,29 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0
-    functionName: LowHands
+  - time: 1
+    functionName: StartMovingUp
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 9.458333
-    functionName: HighHands
+  - time: 9
+    functionName: PauseHigh
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 10
+    functionName: StartMovingDown
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 16.958334
+    functionName: PauseLow
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

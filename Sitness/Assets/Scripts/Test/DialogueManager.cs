@@ -22,6 +22,8 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<string> sentences;
 
+    public string sentence;
+
     void Start()
     {
         dialogueInteraction = FindObjectOfType<DialogueInteraction>();
@@ -90,7 +92,7 @@ public class DialogueManager : MonoBehaviour
             exitDialogue = true;
         }
 
-        string sentence = sentences.Dequeue();
+        sentence = sentences.Dequeue();
         FindObjectOfType<AudioManager>().Play("DialogueBoxNext");
         //dialogueText.text = sentence;
         StopAllCoroutines();

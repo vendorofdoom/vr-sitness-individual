@@ -7,23 +7,21 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class CoolDown : MonoBehaviour
 {
 
-
-
+    public Timer timer;
     public Transform water;
+
+    public CoolDownGuidance guidance;
 
     public float minWaterLevel;
     public float maxWaterLevel;
 
     public Transform leftHand;
     public Transform rightHand;
-
-    //public XRController leftController;
-    //public XRController rightController;
-
+    public InputActionReference leftY;
+    public InputActionReference leftX;
 
     public float prevY;
     public float currY;
-
 
     public bool downComplete = false;
     public bool upComplete = false;
@@ -33,8 +31,10 @@ public class CoolDown : MonoBehaviour
     public AudioSource waterOut;
 
     private float handsUp;
+    [SerializeField]
     private bool handsUpSet = false;
     private float handsDown;
+    [SerializeField]
     private bool handsDownSet = false;
 
     public AudioSource highConfirm;
@@ -42,8 +42,6 @@ public class CoolDown : MonoBehaviour
     private bool soundPlayed = false;
 
 
-    public InputActionReference leftY;
-    public InputActionReference leftX;
 
     private void OnEnable()
     {
@@ -61,11 +59,13 @@ public class CoolDown : MonoBehaviour
     // Raise the left controller and press Y to set your highest position
     void ConfigureHighWaterLevel(InputAction.CallbackContext callbackContext)
     {
+
         if (!handsDownSet || (handsDownSet && (currY > handsDown)))
         {
             highConfirm.Play();
             handsUp = prevY - 0.02f;
             handsUpSet = true;
+            guidance.showYButton = false;
             Debug.Log("Y pressed");
         }
     }
@@ -78,10 +78,11 @@ public class CoolDown : MonoBehaviour
         {
             lowConfirm.Play();
             handsDown = prevY + 0.02f;
+            guidance.showXButton = false;
             handsDownSet = true;
             Debug.Log("X pressed");
-
         }
+
     }
 
     // Start is called before the first frame update
@@ -96,7 +97,28 @@ public class CoolDown : MonoBehaviour
     {
         MoveWater();
         PlaySounds();
+        SetGuidesVisibility();
 
+    }
+
+    private void SetGuidesVisibility()
+    {
+        //if (timer.exerciseBegun && !timer.exerciseComplete)
+        //{
+        //    if (guidance.guidesVisible == false)
+        //    {
+        //        guidance.guidesVisible = true;
+        //    }
+
+        //}
+        //else if (timer.exerciseComplete)
+        //{
+        //    guidance.guidesVisible = false;
+        //}
+        if (timer.exerciseComplete)
+        {
+            guidance.guidesVisible = false;
+        }
     }
 
     void MoveWater()
