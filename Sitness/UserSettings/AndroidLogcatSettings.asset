@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "1WMHH86E6F1217",
         "name": "com.DefaultCompany.Exersitting",
-        "processId": 13598,
+        "processId": 13076,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -78,6 +78,12 @@
             "deviceId": "1WMHH86E6F1217",
             "name": "com.DefaultCompany.Exersitting",
             "processId": 13598,
+            "exited": false
+        },
+        {
+            "deviceId": "1WMHH86E6F1217",
+            "name": "com.DefaultCompany.Exersitting",
+            "processId": 13076,
             "exited": false
         }
     ],

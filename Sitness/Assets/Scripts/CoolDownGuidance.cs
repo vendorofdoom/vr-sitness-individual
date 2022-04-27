@@ -32,6 +32,19 @@ public class CoolDownGuidance : MonoBehaviour
     public DialogueTrigger dt;
     public int displayTriggerSentenceIdx;
 
+    private bool guidanceEnabled;
+
+
+    private void Awake()
+    {
+        guidanceEnabled = PlayerPrefs.GetInt("guidanceEnabled", 1) == 1 ? true : false;
+        if (!guidanceEnabled)
+        {
+            this.enabled = false;
+            leftGuide.SetActive(false);
+            rightGuide.SetActive(false);
+        }
+    }
 
     private enum GuidanceState
     {

@@ -25,6 +25,18 @@ public class CloudGenGuidance : MonoBehaviour
     public Sprite RG;
     public Sprite LGPressed;
     public Sprite RGPressed;
+    
+    private bool guidanceEnabled;
+
+    private void Awake()
+    {
+        guidanceEnabled = PlayerPrefs.GetInt("guidanceEnabled", 1) == 1 ? true : false;
+        if (!guidanceEnabled)
+        {
+            this.enabled = false;
+        }
+    }
+
 
     private enum MovementState
     {
@@ -36,14 +48,19 @@ public class CloudGenGuidance : MonoBehaviour
 
     private void OnEnable()
     {
-        GuideParentLeft.gameObject.SetActive(true);
-        GuideParentRight.gameObject.SetActive(true);
+        if (guidanceEnabled)
+        {
+            GuideParentLeft.gameObject.SetActive(true);
+            GuideParentRight.gameObject.SetActive(true);
+        }
 }
 
     private void OnDisable()
     {
-        GuideParentLeft.gameObject.SetActive(false);
-        GuideParentRight.gameObject.SetActive(false);
+        if (GuideParentLeft != null)
+            GuideParentLeft.gameObject.SetActive(false);
+        if (GuideParentRight != null)
+            GuideParentRight.gameObject.SetActive(false);
     }
 
     // Start is called before the first frame update
